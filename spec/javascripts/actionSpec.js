@@ -1,7 +1,5 @@
 describe("action", function() {
-  var m = moduleFoo(),
-      action = m.action;
-
+  
   it("kick action",function(){
     var called = false,
       calledParams = {},
