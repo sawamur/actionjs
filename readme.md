@@ -38,6 +38,15 @@ action(bar,{age:10}).before(birthday)();
 // bar will be called with { age : 11 };
 ```
 
+You can specify arbitrary numbers of filters. 
+
+```javascript
+actiion(foo,{}).before(f1).before(f2).before(f3)();
+```
+
+Filters will be called in specified order; ie. f1,f2 then f3.
+
+
 ### After filters
 
 After filters will be called with returning parameters from main function
