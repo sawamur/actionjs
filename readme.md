@@ -18,7 +18,7 @@ action(foo,{ bar: 2}).before(zoo)();
 ```
 
 Your `zoo` function will catch `{bar:2}`. 
-To kick main function, you must return true for each before filter. In other word you can prevent the function by returning false.
+To kick main function (in this case `foo`) , you must return true for each before filters. In other word you can prevent the function by returning false.
 
 ```javascript
 function fi(p){
