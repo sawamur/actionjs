@@ -66,6 +66,29 @@ describe("action", function() {
     expect(calledParams).toEqual({opt:1000});
   });
 
+ it("can accept original func as 2nd param",function(){
+    var secondParamBf = false,
+        secondParamAf = false,
+        that = {};
+
+    function func1(params){
+    }
+    that.func1 = func1;
+
+    function bef(params,originalFunc){
+      secondParamBf = originalFunc;
+      return true;
+    }
+
+    function af(params,originalFunc){
+      secondParamAf = originalFunc;
+      return true;
+    }
+    action(that.func1,{opt:1}).before(bef).after(af)();
+    expect(secondParamBf).toEqual(func1);
+    expect(secondParamAf).toEqual(func1);
+  });
+
   it("can kick otherwise",function(){
         var called = false,
             calledParams = {},

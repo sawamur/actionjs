@@ -1,6 +1,5 @@
 
 
-
 function action(func,params){
     var f,
         beforeFilters = [],
@@ -14,16 +13,16 @@ function action(func,params){
 
         beforeFilters.reverse();
         for( i = beforeFilters.length; i > 0 ; i-- ){
-            tf = beforeFilters[0].call(this,params);
+            tf = beforeFilters[0].call(this,params,func);
         }
         if(tf){
             res = func(params);
         } else {
-            otherwise(params);
+            otherwise(params,func);
         }
         afterFilters.reverse();
         for( i = afterFilters.length; i > 0 ; i-- ){
-            res = afterFilters[0].call(this,res);
+            res = afterFilters[0].call(this,res,func);
         }
         return res;
     };
@@ -37,6 +36,7 @@ function action(func,params){
         afterFilters.push(func);
         return f;
     };
+
     f.otherwise = function(func){
         otherwise = func;
         return f;
