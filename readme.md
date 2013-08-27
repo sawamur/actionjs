@@ -1,4 +1,3 @@
-
 # action.js
 
 appy filters before and  after the action
@@ -7,6 +6,38 @@ appy filters before and  after the action
 ```
 action(func1,{opt:"foo"}).before(foo1).before(foo2).after(bar1)();
 ```
+
+## Filters
+
+### Before filters
+
+You can set multipule before filters. Each filters will be called with original parameters. Which mean if you write as follows
+
+```
+action(foo,{ bar: 2}).before(zoo)();
+```
+
+Your `zoo` function will catch `{bar:2}`. 
+To kick main function, you must return true for each before filter. In other word you can prevent the function by returning false.
+
+```
+function fi(p){
+   return false;
+}
+action(foo,{}).before(fi)(); // you never call foo
+```
+
+You can modify original paramters within before filters.
+
+```
+function birthday(p){
+   p.age ++;
+   return true;
+}
+action(bar,{age:10}).before(birthday)();
+// bar will called with { age : 11 };
+```
+
 
 ## Testing
 
