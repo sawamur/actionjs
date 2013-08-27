@@ -38,7 +38,7 @@ action(bar,{age:10}).before(birthday)();
 // bar will be called with { age : 11 };
 ```
 
-### after filters
+### After filters
 
 After filters will be called with returning parameters from main function
 
