@@ -1,6 +1,6 @@
 # action.js
 
-appy filters before and  after the action
+apply filters before and  after the action
 
 
 ```
