@@ -57,6 +57,21 @@ action(main,{}).after(af)();
 
 ```
 
+### Otherwise
+
+If you want to do something another when it stops on one of before filters, you can specify `otherwise`.
+
+```javascript
+function foo(p){
+    cosole.log("action canceled");
+}
+function fl(p){
+   return false;
+}
+action(foo,{}).before(fl).otherwise(foo)();
+// => "action canceled"
+```
+
 
 
 ## Testing
