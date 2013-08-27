@@ -32,10 +32,10 @@ describe("action", function() {
       return {a:2};
     }
     function bef1(params){
-      return true;
+      return false;
     }
     function bef2(params){
-      return false;
+      return true;
     }
     action(func1,{opt:1}).before(bef1).before(bef2)();
 

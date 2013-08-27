@@ -11,8 +11,8 @@ function action(func,params){
             res,
             i,len;
 
-        beforeFilters.reverse();
-        for( i = beforeFilters.length; i > 0 ; i-- ){
+
+        for( i = 0,len = beforeFilters.length; tf && i < len ; i++ ){
             tf = beforeFilters[0].call(this,params,func);
         }
         if(tf){
@@ -20,8 +20,8 @@ function action(func,params){
         } else {
             otherwise(params,func);
         }
-        afterFilters.reverse();
-        for( i = afterFilters.length; i > 0 ; i-- ){
+
+        for( i = 0,len = afterFilters.length; i < len; i++ ){
             res = afterFilters[0].call(this,res,func);
         }
         return res;
